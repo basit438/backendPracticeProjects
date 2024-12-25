@@ -4,9 +4,14 @@ import express from "express";
 
 import "dotenv/config";
 
+import cors from "cors";
+
 import mongoose from "mongoose";
  const app = express();
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
 
+ app.use(cors("http://localhost:5173/"));
  app.get("/", (req, res) => {
   res.send("Hello World");
  });
@@ -47,7 +52,7 @@ import mongoose from "mongoose";
     }
  });
 
- const Book = mongoose.model("Books", BookSchema);
+ const Book = mongoose.model("books", BookSchema);
 
  // Api paths
 
