@@ -28,6 +28,50 @@ import mongoose from "mongoose";
 
  startServer();
 
+ const BookSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    }
+ });
+
+ const Book = mongoose.model("Books", BookSchema);
+
+ // Api paths
+
+// Api to fetch all books 
+app.get("/api/get/books",async (req, res) => {
+    const allBooks = await Book.find();
+    res.send(allBooks);
+});
+
+// Api to add a new book
+app.post("/api/add/book", (req, res) => {
+
+});
+
+// Api to update a book
+app.put("/api/update/book", (req, res) => {
+
+});
 
 
- 
+// Api to delete a book
+app.delete("/api/delete/book", (req, res) => {
+
+});
+
+
+
